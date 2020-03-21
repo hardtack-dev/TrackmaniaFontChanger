@@ -11,7 +11,7 @@ TrackMania installation folder (GameData\Interface\media\fonds\RedTexture\Led_00
 this program has written by  AutoHotkey Script Languge(C++)
 
 also THIS PROGRAM IS OPEN SOURCE
-or just you can decompile the program how its work( ͡° ͜ʖ ͡°)
+you can decompile the program how its work( ͡° ͜ʖ ͡°)
 
 source code is also avaliable my Github
 ->https://github.com/HARDTACK-Dev/TrackmaniaFontChanger
