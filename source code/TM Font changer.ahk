@@ -1,4 +1,4 @@
-﻿
+﻿#NoTrayIcon
 #SingleInstance Force
 #NoEnv
 SetWorkingDir %A_ScriptDir%
