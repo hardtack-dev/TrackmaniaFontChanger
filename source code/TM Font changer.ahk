@@ -15,9 +15,9 @@ Gui Add, Button, x510 y322 w96 h37 gApply, Apply
 Gui Font, S14
 Gui Add, Button, x125 y379 w29 h27 gSettings, ⚙️
 
-;===================== 업데이트 soon 툴팁 =========================
+;===================== Update Soon Tooltip =========================
 Gui Add, Button, x155 y379 w29 h27 +Disabled , +
-OnMessage(0x200, "update_soon") ;툴팁 기능
+OnMessage(0x200, "update_soon") ;툴팁 기능(Tooltip function)
 
 
 Gui Font,
@@ -27,35 +27,35 @@ Gui Add, Text, x122 y356 w120 h23 +0x200, Settings
 
 
 Gui Show, w620 h420, TM Font changer (v1.0)
-;============== 설정  gui======================
+;============== Settings  gui======================
 Gui, Settings:New, ,Settings
 Gui, Add, Text, w300 h200, 💾Trackmania Installation Directory
 Gui Add, Edit, x10 y20 w280 h20 vDirSelect ,
 Gui Add, Button, x295 y19 w23 h23 gDirSelectBT, ...
 
-;============== under working====================
+;============== Uder working====================
 ;Gui Add, GroupBox, x15 y50 w298 h50 +Center, add custom fonts
 ;Gui Add, Listbox, x20 y70 w250 h27 , 
 ;Gui Add, Button, x275 y70 w23 h23 , +
 
-;============== Credit ==========================
+;============== Credits==========================
 Gui, Font, FFD8BFD8
 Gui, Add, Text, x15 y50 w300 h12, Program Made by Hardtack
 Gui Add, Link, x15 y65 w300 h60, <a href="">Discord: Hardtack#1342</a>
 Gui, Add, Text, x15 y90 w300 h12, Special thanks to Twince, blue :)
 Gui, Font
-;========================= 게임 설치 경로 가져오기 ===============
+;============= Game Installation Directory==========
 FileReadLine, dndir, src\path.dat, 1
 guicontrol, ,DirSelect, %dndir%
 
 Return
 
-;============ 툴팁 ===============================
+;============ Tooltip ========================
 update_soon(wParam, lParam, Msg) {
 
 MouseGetPos,,,, OutputVarControl
 
-IfEqual, OutputVarControl, Button3 ;세번쨰 버튼인 +(곧 추가할) 버튼
+IfEqual, OutputVarControl, Button3 ;세번쨰 버튼인 +(곧 추가할) 버튼(3rd Button that add soon)
 
 	update_soon := "add custom fonts `n will update asap :("
 
@@ -66,7 +66,7 @@ ToolTip % update_soon
 
 
 
-;========================= 리스트 뷰 =========================
+;========================= Font Listview ============
 List:
 {      
      Gui, Submit, NoHide 
@@ -76,10 +76,10 @@ List:
 }
 return
 
-;========================= 적용 버튼 ===========================
+;========================= Apply Button ===============
 Apply:
 { 
-    ;;들어온 TM디렉토리 경로에 fonts폴더가 없으면 거부 화면 구현하기
+    
     if (!FileExist(dndir)) 
         {
             MsgBox, 48, TM font changer, select TM installtion folder first :)
@@ -102,7 +102,7 @@ Apply:
     
         ifMsgBox, Yes
             {
-            Filecopy,src\fonts\%List%\Led_00.dds, %dndir%\GameData\Interface\Media\Font\Led_Textures,1 ;파일 복사
+            Filecopy,src\fonts\%List%\Led_00.dds, %dndir%\GameData\Interface\Media\Font\Led_Textures,1 ;파일 복사(File Copy)
             MsgBox, 64, TM font changer, Successfuly changed!
             }
         ifMsgBox, No
@@ -117,14 +117,14 @@ Apply:
 
 return
 
-;============= 세팅 gui 활성화==============================
+;============= Stting GUI SHOW =================
 Settings:
 {
     Gui, Settings:Show, w320 h110
   }
 return
 
-;============ trackmanaia설치 폴더지정 함수  =================
+;============ TM Installtion Select Button =======
 DirSelectBT:
 {
     FileSelectFolder, dndir, , 3
@@ -134,7 +134,7 @@ DirSelectBT:
     return 
     } 
 
-   GuiControl,, DirSelect, %dndir%  ;;dndir에 디렉토리 경로를 edit에 띄어줌
+   GuiControl,, DirSelect, %dndir%  ;;dndir에 디렉토리 경로를 edit에 띄어줌 (show the directotory on EditBox)
    
    
     if (FileExist(dndir)) 
@@ -147,14 +147,8 @@ Return
 
 }
 
-;=========== 언어 기능 =================================
-Deutsch:
-{
-Gui Add, Text, x10 y7 w88 h19 +0x200, Schriftarten
 
-Gui Add, Text, x127 y6 w101 h22 +0x200, Vorschau
-Gui Add, Button, x510 y322 w96 h37 gApply, Apply
-
+=========== Setting Button =================
 Gui Font, S14
 Gui Add, Button, x125 y379 w29 h27 gSettings, ⚙️
 Gui Font,
@@ -162,10 +156,6 @@ Gui Add, Text, x122 y356 w120 h23 +0x200, Settings
 
 
 Gui Show, w620 h420, TM Font changer
-;============== 설정  gui======================
-Gui, Settings:New, ,Settings
-Gui, Add, Text, w300 h200, Trackmania Installation Directory
-}
 
 
 GuiEscape:
