@@ -27,3 +27,4 @@ also special thanks to Twince for technical help :)
 
 --------------------- change log ------------------------------
  06/01/2020:  added 32bit support
+              Copy bug Fixed
